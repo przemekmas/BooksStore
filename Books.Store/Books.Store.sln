@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32922.545
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Books.Store", "Books.Store.csproj", "{1AA8B0C8-3A65-4EC0-AA42-0674AFB8406E}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Books.Store.SQL", "..\Books.Store.SQL\Books.Store.SQL.sqlproj", "{4AE15E39-51F8-457A-A4AF-0186DA281A4B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1AA8B0C8-3A65-4EC0-AA42-0674AFB8406E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AA8B0C8-3A65-4EC0-AA42-0674AFB8406E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AA8B0C8-3A65-4EC0-AA42-0674AFB8406E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AA8B0C8-3A65-4EC0-AA42-0674AFB8406E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4AE15E39-51F8-457A-A4AF-0186DA281A4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AE15E39-51F8-457A-A4AF-0186DA281A4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AE15E39-51F8-457A-A4AF-0186DA281A4B}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{4AE15E39-51F8-457A-A4AF-0186DA281A4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AE15E39-51F8-457A-A4AF-0186DA281A4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4AE15E39-51F8-457A-A4AF-0186DA281A4B}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B865B7BC-D60F-452B-A76D-176C616E4E51}
+	EndGlobalSection
+EndGlobal

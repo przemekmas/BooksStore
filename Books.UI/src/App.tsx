@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Layout from './Components/Layout';
 import AddBook from './Pages/AddBook';
 import ViewBooks from './Pages/ViewBooks';
+import EditBook from './Pages/EditBook';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
           <Route path="/" element={<Layout />}>
             <Route path="addBook" element={<AddBook />} />
             <Route path="viewBooks" element={<ViewBooks />} />
+            <Route path="editBook/:id" element={<EditBook />} />
           </Route>
         </Routes>
       </BrowserRouter>      

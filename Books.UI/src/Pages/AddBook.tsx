@@ -1,8 +1,15 @@
+import { Button, TextField, Typography } from "@mui/material";
+import Grid from "@mui/material/Grid2";
+import { useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Book } from "../Types/Book";
 import api from "../Utils/Api";
 
 function AddBook() {
+    const navigate = useNavigate();
+    const queryClient = useQueryClient();
+    const [isLoading, setIsLoading] = useState<boolean>();
     const [formData, setFormData] = useState<Book>({
         id: -1,
         name: '',
@@ -11,8 +18,14 @@ function AddBook() {
 
     const handleAddBook = async (e: React.FormEvent) => {
         e.preventDefault();
-        console.log(formData);
-        api.post("/books/book", formData);
+        setIsLoading(true);
+
+        api.post("/books/book", formData)
+            .finally(() => {
+                setIsLoading(false);
+                queryClient.invalidateQueries({ queryKey: ['getBooks'] });
+                navigate("/viewbooks", { state: { message: `Book "${formData?.name}" was successfully added.` } });
+            });
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -22,23 +35,32 @@ function AddBook() {
 
     return (
         <>
-            <h1>Add Book</h1>
-
+            <Typography variant="h4" component="h1" sx={{ marginBottom: 3 }}>Add Book</Typography>
             <form onSubmit={handleAddBook}>
-                <div className="form-row">
-                    <label>Id:</label>
-                    <input type='text' value={formData?.id} name='id' onChange={handleChange}></input>
-                </div>
-                <div className="form-row">
-                    <label>Name:</label>
-                    <input type='text' value={formData?.name} name='name' onChange={handleChange}></input>
-                </div>
-                <div className="form-row">
-                    <label>Description:</label>
-                    <input type='text' value={formData?.description} name='description' onChange={handleChange}></input>
-                </div>
+                <Grid container spacing={2}>
+                    <Grid size={8} offset={2}>
+                        <TextField
+                            required
+                            sx={{ minWidth: 400 }}
+                            id="outlined-basic"
+                            name='name'
+                            label="Name:"
+                            variant="outlined"
+                            onChange={handleChange} />
+                    </Grid>
+                    <Grid size={8} offset={2}>
+                        <TextField
+                            required
+                            sx={{ minWidth: 400 }}
+                            id="outlined-basic"
+                            name='description'
+                            label="Description:"
+                            variant="outlined"
+                            onChange={handleChange} />
+                    </Grid>
+                </Grid>
 
-                <button type="submit">Add Book</button>
+                <Button type="submit" variant="outlined" sx={{ marginTop: 3, minWidth: 200 }}>Add Book</Button>
             </form>
         </>
     );
